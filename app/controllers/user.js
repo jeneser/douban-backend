@@ -27,12 +27,11 @@ router.post('/', function (req, res, next) {
 
     // Access-Control-Allow-Origin
     res.set('Access-Control-Allow-Origin', 'http://localhost:8080')
-
-    res.status(200).json({
-      name: name,
-      email: email,
-      token: token
-    })
+      .status(200).json({
+        name: name,
+        email: email,
+        token: token
+      })
   } else {
     // Error handle
     res.status(400).jsonp({
