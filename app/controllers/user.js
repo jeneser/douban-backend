@@ -47,13 +47,13 @@ router.get('/:name', function (req, res, next) {
   jwt.verify(token, 'shhhhh', function (err, decoded) {
     // Error handle
     if (err) {
-      res.status(401).jsonp({
+      res.status(401).send({
         error: 'Invalid token'
       })
     } else {
       res.set('Access-Control-Allow-Origin', 'http://localhost:8080')
       // Authorization sucess return token
-      res.status(200).jsonp({
+      res.status(200).send({
         name: name,
         token: token
       })
