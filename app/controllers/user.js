@@ -26,8 +26,8 @@ router.post('/', function (req, res, next) {
     }, 'shhhhh')
 
     // Access-Control-Allow-Origin
-    res.header('Access-Control-Allow-Origin', '*')
-    res.status(200).json({
+    res.header("Access-Control-Allow-Origin", "*")
+    res.status(200).send({
       name: name,
       email: email,
       token: token
