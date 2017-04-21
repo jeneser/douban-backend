@@ -8,6 +8,8 @@ var bodyParser = require('body-parser')
 var compress = require('compression')
 var methodOverride = require('method-override')
 
+var cors = require('cors')
+
 module.exports = function (app, config) {
   var env = process.env.NODE_ENV || 'development'
   app.locals.ENV = env
@@ -27,17 +29,11 @@ module.exports = function (app, config) {
   app.use(express.static(config.root + '/public'))
   app.use(methodOverride())
 
+  app.use(cors())
+
   var controllers = glob.sync(config.root + '/app/controllers/*.js')
   controllers.forEach(function (controller) {
     require(controller)(app)
-  })
-
-  app.all('*', function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With')
-    res.header('Access-Control-Allow-Headers', 'Content-Type')
-    next()
   })
 
   app.use(function (req, res, next) {

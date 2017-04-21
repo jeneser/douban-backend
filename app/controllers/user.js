@@ -32,7 +32,7 @@ router.post('/', function (req, res, next) {
     })
   } else {
     // Error handle
-    res.status(400).jsonp({
+    res.status(400).send({
       error: 'Missing field'
     })
   }
