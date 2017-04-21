@@ -25,7 +25,10 @@ router.post('/', function (req, res, next) {
       exp: Math.floor(Date.now() / 1000) + 100
     }, 'shhhhh')
 
-    res.status(200).jsonp({
+    // Access-Control-Allow-Origin
+    res.set('Access-Control-Allow-Origin', 'http://localhost:8080')
+
+    res.status(200).json({
       name: name,
       email: email,
       token: token
@@ -51,6 +54,7 @@ router.get('/:name', function (req, res, next) {
         error: 'Invalid token'
       })
     } else {
+      res.set('Access-Control-Allow-Origin', 'http://localhost:8080')
       // Authorization sucess return token
       res.status(200).jsonp({
         name: name,
