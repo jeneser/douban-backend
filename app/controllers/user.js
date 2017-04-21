@@ -25,14 +25,14 @@ router.post('/', function (req, res, next) {
       exp: Math.floor(Date.now() / 1000) + 100
     }, 'shhhhh')
 
-    res.status(200).json({
+    res.status(200).jsonp({
       name: name,
       email: email,
       token: token
     })
   } else {
     // Error handle
-    res.status(400).json({
+    res.status(400).jsonp({
       error: 'Missing field'
     })
   }
@@ -47,12 +47,12 @@ router.get('/:name', function (req, res, next) {
   jwt.verify(token, 'shhhhh', function (err, decoded) {
     // Error handle
     if (err) {
-      res.status(401).json({
+      res.status(401).jsonp({
         error: 'Invalid token'
       })
     } else {
       // Authorization sucess return token
-      res.send({
+      res.status(200).jsonp({
         name: name,
         token: token
       })
