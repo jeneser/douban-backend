@@ -26,13 +26,16 @@ router.post('/', function (req, res, next) {
     }, 'shhhhh')
 
     // Access-Control-Allow-Origin
-    res.header("Access-Control-Allow-Origin", "*")
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With')
     res.status(200).send({
       name: name,
       email: email,
       token: token
     })
   } else {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With')
     // Error handle
     res.status(400).jsonp({
       error: 'Missing field'
