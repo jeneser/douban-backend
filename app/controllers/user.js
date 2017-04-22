@@ -22,7 +22,7 @@ router.post('/', function (req, res, next) {
     var token = jwt.sign({
       user: name,
       email: email,
-      exp: Math.floor(Date.now() / 1000) + 100
+      exp: Math.floor(Date.now() / 1000) + 600
     }, 'shhhhh')
 
     res.status(200).send({
@@ -51,7 +51,6 @@ router.get('/:name', function (req, res, next) {
         error: 'Invalid token'
       })
     } else {
-      res.set('Access-Control-Allow-Origin', 'http://localhost:8080')
       // Authorization sucess return token
       res.status(200).send({
         name: name,

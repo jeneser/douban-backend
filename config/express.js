@@ -28,7 +28,7 @@ module.exports = function (app, config) {
   app.use(compress())
   app.use(express.static(config.root + '/public'))
   app.use(methodOverride())
-
+  // CORS
   app.use(cors())
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js')
