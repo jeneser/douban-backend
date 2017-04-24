@@ -20,7 +20,7 @@ router.post('/', function (req, res, next) {
       validator.isLength(name, {min: 2, max: 10})) {
     // Generate token
     var token = jwt.sign({
-      user: name,
+      name: name,
       email: email,
       exp: Math.floor(Date.now() / 1000) + 600
     }, 'shhhhh')
@@ -39,21 +39,24 @@ router.post('/', function (req, res, next) {
 })
 
 // Get user
-router.get('/:name', function (req, res, next) {
-  var name = req.params.name
+router.get('/:id', function (req, res, next) {
+  // var id = req.params.id
   var token = req.get('Authorization').split(' ')[1]
 
   // Verify
   jwt.verify(token, 'shhhhh', function (err, decoded) {
     // Error handle
     if (err) {
+      // If the user is legitimate, but token fails
+      // you can re generate token
       res.status(401).send({
         error: 'Invalid token'
       })
     } else {
       // Authorization sucess return token
       res.status(200).send({
-        name: name,
+        name: decoded.name,
+        email: decoded.email,
         token: token
       })
     }
