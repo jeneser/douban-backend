@@ -23,7 +23,7 @@ router.post('/', function (req, res, next) {
       name: name,
       email: email,
       exp: Math.floor(Date.now() / 1000) + 600
-    }, 'shhhhh')
+    }, 'shxhxhxhx')
 
     res.status(200).send({
       name: name,
@@ -44,7 +44,7 @@ router.get('/:id', function (req, res, next) {
   var token = req.get('Authorization').split(' ')[1]
 
   // Verify
-  jwt.verify(token, 'shhhhh', function (err, decoded) {
+  jwt.verify(token, 'shxhxhxhx', function (err, decoded) {
     // Error handle
     if (err) {
       // If the user is legitimate, but token fails
