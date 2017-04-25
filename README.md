@@ -2,6 +2,8 @@
 
 > Awesome douban DEMO **Back-End** created with Express
 
+Live Demo: [Douban Back-End](https://douban.herokuapp.com/)
+
 # Getting started
 
 ```
@@ -16,18 +18,18 @@ For detailed explanation on how things work, checkout the [generator-express](ht
 
 # Deploy to heroku
 
-```
+``` bash
 # Log in to your Heroku account
-$ heroku login
+heroku login
 
 # Initialize a git repository in a existing directory
-$ cd douban-backend/
-$ heroku git:remote -a your-repo
+cd douban-backend/
+heroku git:remote -a your-repo
 
 # Deploy your application
-$ git add .
-$ git commit -am "make it better"
-$ git push heroku master
+git add .
+git commit -am "make it better"
+git push heroku master
 ```
 
 Learn more [Heroku](https://heroku.com/) and [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
