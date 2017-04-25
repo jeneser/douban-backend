@@ -6,7 +6,7 @@ Live Demo: [Douban Back-End](https://douban.herokuapp.com/)
 
 # Getting started
 
-```
+``` bash
 # install dependencies
 npm install
 
